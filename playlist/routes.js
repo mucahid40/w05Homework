@@ -50,7 +50,8 @@ router.get('/playlists/:id', (req, res, next) => {
           message: `playlist does not exist`
         })
       }
-      return res.send(playlist)
+      // cant do (playlist, {include : songs}) then the api crashes
+      return res.status(200).send(playlist)
     })
     .catch(error => next(error))
 })
